@@ -1,0 +1,17 @@
+.button-registry {
+  background: #E9F2FB;
+  border: none;
+  padding: 0;
+  &__link {
+    display: block;
+    padding: 3px 5px 3px 5px;
+    color: black;
+    &:hover {
+      color: black;
+    }
+  }
+}
+
+.active {
+  background-color: #B9C2CB;
+}
