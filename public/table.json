@@ -1,7 +1,7 @@
 {
   "table": [
     {
-      "title": "Номер по списку",
+      "title": "",
       "data_key": "id_sds",
       "data_type": "string",
       "is_sort": true,
@@ -63,6 +63,7 @@
       "is_sort": true,
       "number_in_row": 1
     }
+ 
   ],
   "data": [
     {

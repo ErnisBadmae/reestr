@@ -11,8 +11,8 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />}>
           <Route index element={<RegistryRSO />} />
-        </Route>
           <Route path="/entry/:id" element={<CardItem />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

@@ -27,7 +27,7 @@ const statusOptions = [
 export const RegistryRSO = () => {
 
   let [filterModalVisible, setFilterModalVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   // const [id, setId] = useState(0);
 
   const { columns, data } = useSelector((store) => store);
@@ -69,56 +69,9 @@ export const RegistryRSO = () => {
   //     // defaultSortOrder: 'descend',
   //     width: '10%',
   //   },
-  //   {
-  //     title: 'Регистрационный номер',
-  //     dataIndex: 'reg_no',
-  //     // sorter: (a, b) => a.reg_no.length - b.reg_no.length,
-  //     // render: (reg_no) => `${reg_no.first} ${reg_no.last}`,
-  //     // defaultSortOrder: 'descend',
-  //     width: '10%',
-  //   },
-  //   {
-  //     title: 'Дата регистрации',
-  //     dataIndex: 'reg_date',
-  //     sorter: (a, b) => a.reg_date.length - b.reg_date.length,
-  //     // render: (reg_date) => `${reg_date.first} ${reg_date.last}`,
-  //     // defaultSortOrder: 'descend',
-  //     width: '10%',
-  //   },
-  //   {
-  //     title: 'Компания',
-  //     dataIndex: 'reg_comp',
-  //     sorter: (a, b) => a.reg_comp.length - b.reg_comp.length,
-  //     // defaultSortOrder: 'descend',
-  //     width: '10%',
-  //   },
-  //   {
-  //     title: 'Сайт',
-  //     dataIndex: 'site',
-  //     // sorter: (a, b) => a.site.length - b.site.length,
-  //     // render: (site) => `${site.first} ${site.last}`,
-  //     // defaultSortOrder: 'descend',
-  //     width: '10%',
-  //   },
-  //   {
-  //     title: 'Адрес',
-  //     dataIndex: 'area',
-  //     sorter: true,
-  //     // render: (area) => `${area.first} ${area.last}`,
-  //     // defaultSortOrder: 'descend',
-  //     width: '10%',
-  //   },
-  //   {
-  //     title: 'Статус',
-  //     dataIndex: 'status',
-  //     sorter: (a, b) => a.status.length - b.status.length,
-  //     // defaultSortOrder: 'descend',
-  //     width: '10%',
-  //   },
-  // ];
 
   const dataSource = data.map((item) => ({ ...item, key: item.id_sds }));
-
+  // console.log(dataSource);
   // function itemRender(current, type, originalElement) {
   //   if (type === 'предыдущая') {
   //     return <a>Previous</a>;
@@ -136,12 +89,14 @@ export const RegistryRSO = () => {
 
   const relocateToCard = (record) => {
     return {
-      onClick: () => {
-        console.log(record)
+      onClick: (e) => {
+        e.preventDefault();
+        
+        // console.log(record, 'record') 
         //const { id_sds = '' } = record || {};
         // setId(id_sds);
-        navigate('/entry/' + record.data_key)
-        // localStorage.setItem('userChange', id_sds);
+        navigate('/entry/' + record.id_sds)
+       
       },
     };
   };
@@ -186,13 +141,14 @@ export const RegistryRSO = () => {
             </Form.Item>
           </Form>
         </Modal>
-        <Row>
+        <Row >
           <Col xs={24}>
             <Table
-              loading={loading}
+              
+              // loading={loading}
               columns={columns}
-              dataSource={dataSource}
-              size="small"
+              dataSource={dataSource} className='registry-sro'
+              size="medium"
               // pagination={{ position: [state.top, state.bottom] }}
               // onRow={(record, dataIndex) => {
               //   return {

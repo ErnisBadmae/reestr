@@ -1,7 +1,6 @@
 // import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: 0,
   data: [],
   columns: [],
   currentItem: {},
@@ -18,46 +17,27 @@ export const main = (state = initialState, action) => {
           dataIndex: elem.data_key,
         };
       });
-
+      // console.log('action payload table', cols);
       return { ...state, columns: cols, data: action.payload.data };
 
     case 'GET_ITEM':
-      // console.log(action.payload);
+      // console.log(action.payload," action.payload from get item");
 
       return {
         ...state,
         currentItem: action.payload.data.data.find(
-          (el) => el.data_key == action.payload.page_id
+          (el) => el.id_sds === action.payload.page_id
         ),
       };
 
-    case 'INIT_CURRENT_ITEM':
-      return {
-        ...state,
-        curentItem: action.payload,
-      };
+    // case 'INIT_CURRENT_ITEM':
+    //   console.log('action.payload init current', action.payload);
+    //   return {
+    //     ...state,
+    //     curentItem: action.payload,
+    //   };
 
     default:
       return state;
   }
 };
-
-// export const main = createSlice({
-//   name: 'main',
-//   initialState,
-//   reducers: {
-//     increment: (state) => {
-//       state.value += 1
-//     },
-//     decrement: (state) => {
-//       state.value -= 1
-//     },
-//     incrementByAmount: (state, action) => {
-//       state.value += action.payload
-//     },
-//   },
-// })
-
-// export const { increment, decrement, incrementByAmount } = main.actions
-
-// export default main

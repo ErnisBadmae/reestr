@@ -10,7 +10,8 @@ export const Header = () => {
     <Content style={{ padding: '0 50px' }}>
       <header className="header">
         <div className="header__logo pointer">
-          <img className="logo" src={logo} alt="logo" />
+        {/* <Link to="/signup" className="btn btn-primary">Sign up</Link> */}
+          <a href='http://localhost:3000/'><img className="logo" src={logo} alt="logo" /></a>
         </div>
         <div className="header__title">
           <div className="header__title_title">ПРОФ СДС</div>
