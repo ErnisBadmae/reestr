@@ -1,6 +1,27 @@
 .registry-sro {
-  cursor: pointer;
+  // cursor: pointer;
   &__filter-input {
     width: 200px;
+  }
+  &__filter-icon {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    padding: 10px;
+    background-color: #e4effa;
+    color: #696e73 !important;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%),
+      0 1px 10px 0 rgb(0 0 0 / 12%);
+    border-radius: 10px;
+    margin: 5px 0;
+  }
+  &__filter-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__table {
+    td.ant-table-cell {
+      cursor: pointer;
+    }
   }
 }

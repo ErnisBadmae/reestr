@@ -1,10 +1,22 @@
-import { Table, Row, Col, Modal, Layout, Select, Input, Form } from 'antd';
+import {
+  Table,
+  Row,
+  Col,
+  Layout,
+  Select,
+  Input,
+  Form,
+  Drawer,
+  Button,
+  Space,
+} from 'antd';
+import { FilterFilled } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import './registry-sro.scss';
 import getData from '../../helpers/rootData';
 import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 const { Content } = Layout;
 const { Option } = Select;
@@ -25,13 +37,12 @@ const statusOptions = [
 ];
 
 export const RegistryRSO = () => {
-
   let [filterModalVisible, setFilterModalVisible] = useState(false);
   // const [loading, setLoading] = useState(false);
   // const [id, setId] = useState(0);
 
   const { columns, data } = useSelector((store) => store);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [form] = Form.useForm();
 
@@ -91,12 +102,11 @@ export const RegistryRSO = () => {
     return {
       onClick: (e) => {
         e.preventDefault();
-        
-        // console.log(record, 'record') 
+
+        // console.log(record, 'record')
         //const { id_sds = '' } = record || {};
         // setId(id_sds);
-        navigate('/entry/' + record.id_sds)
-       
+        navigate('/entry/' + record.id_sds);
       },
     };
   };
@@ -112,15 +122,32 @@ export const RegistryRSO = () => {
           value={searchText}
         />
       </Space> */}
-      <Content style={{ padding: '0 50px' }}>
-        <button onClick={() => setFilterModalVisible(true)}> Фильтр</button>
-        <Modal
+      <Content style={{ padding: '0 20px' }}>
+        <div className="registry-sro__filter-wrapper">
+          <FilterFilled
+            className="registry-sro__filter-icon"
+            onClick={() => setFilterModalVisible(true)}
+          />
+        </div>
+        <Drawer
           title="Отфильтровать записи"
-          onOk={() => {
-            console.log(form.getFieldsValue());
-          }}
           visible={filterModalVisible}
-          onCancel={() => setFilterModalVisible(false)}
+          onClose={() => setFilterModalVisible(false)}
+          extra={
+            <Space>
+              <Button onClick={() => setFilterModalVisible(false)}>
+                Cancel
+              </Button>
+              <Button
+                type="primary"
+                onClick={() => {
+                  console.log(form.getFieldsValue());
+                }}
+              >
+                OK
+              </Button>
+            </Space>
+          }
         >
           <Form form={form}>
             <Form.Item name="state">
@@ -129,7 +156,9 @@ export const RegistryRSO = () => {
                 placeholder="Статус"
               >
                 {statusOptions.map((el) => (
-                  <Option key={el.value} value={el.value}>{el.title}</Option>
+                  <Option key={el.value} value={el.value}>
+                    {el.title}
+                  </Option>
                 ))}
               </Select>
             </Form.Item>
@@ -140,14 +169,14 @@ export const RegistryRSO = () => {
               ></Input>
             </Form.Item>
           </Form>
-        </Modal>
-        <Row >
-          <Col xs={24}>
+        </Drawer>
+        {/* <Row>
+          <Col xs={24}> */}
             <Table
-              
               // loading={loading}
               columns={columns}
-              dataSource={dataSource} className='registry-sro'
+              dataSource={dataSource}
+              className="registry-sro__table"
               size="medium"
               // pagination={{ position: [state.top, state.bottom] }}
               // onRow={(record, dataIndex) => {
@@ -165,8 +194,8 @@ export const RegistryRSO = () => {
               }}
               onRow={(record) => relocateToCard(record)}
             />
-          </Col>
-        </Row>
+          {/* </Col>
+        </Row> */}
       </Content>
     </div>
   );
