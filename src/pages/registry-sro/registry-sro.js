@@ -1,4 +1,13 @@
-import { Table, Layout, Select, Input, Form, Drawer, Button, Space } from 'antd';
+import {
+  Table,
+  Layout,
+  Select,
+  Input,
+  Form,
+  Drawer,
+  Button,
+  Space,
+} from 'antd';
 import { FilterFilled } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
 import './registry-sro.scss';
@@ -117,84 +126,88 @@ export const RegistryRSO = () => {
             onClick={() => setFilterModalVisible(true)}
           />
         </div>
-        <Drawer
-          title="Отфильтровать записи"
-          visible={filterModalVisible}
-          onClose={() => setFilterModalVisible(false)}
-          extra={
-            <Space>
-              <Button onClick={() => setFilterModalVisible(false)}>
-                Cancel
-              </Button>
-              <Button
-                type="primary"
-                onClick={() => {
-                  console.log(form.getFieldsValue());
-                }}
-              >
-                OK
-              </Button>
-            </Space>
-          }
-        >
-          <Form form={form}>
-            <Form.Item name="state">
-              <Select
-                className="registry-sro__filter-input"
-                placeholder="Статус"
-              >
-                {statusOptions.map((el) => (
-                  <Option key={el.value} value={el.value}>
-                    {el.title}
-                  </Option>
-                ))}
-              </Select>
-            </Form.Item>
-            <Form.Item name="address">
-              <Input
-                className="registry-sro__filter-input"
-                placeholder="Адрес"
-              ></Input>
-            </Form.Item>
-            <Form.Item name="fullName">
-              <Input
-                className="registry-sro__filter-input"
-                placeholder="Полное наименование организации"
-              ></Input>
-            </Form.Item>
-            <Form.Item name="regNumber">
-              <Input
-                className="registry-sro__filter-input"
-                placeholder="Регистрационный номер"
-              ></Input>
-            </Form.Item>
-          </Form>
-        </Drawer>
-        {/* <Row>
+        <div className='registry-sro__drawer-wrapper'>
+          <Drawer
+            getContainer={false}
+            style={{ position: 'absolute' }}
+            title="Отфильтровать записи"
+            visible={filterModalVisible}
+            onClose={() => setFilterModalVisible(false)}
+            extra={
+              <Space>
+                <Button onClick={() => setFilterModalVisible(false)}>
+                  Cancel
+                </Button>
+                <Button
+                  type="primary"
+                  onClick={() => {
+                    console.log(form.getFieldsValue());
+                  }}
+                >
+                  OK
+                </Button>
+              </Space>
+            }
+          >
+            <Form form={form}>
+              <Form.Item name="state">
+                <Select
+                  className="registry-sro__filter-input"
+                  placeholder="Статус"
+                >
+                  {statusOptions.map((el) => (
+                    <Option key={el.value} value={el.value}>
+                      {el.title}
+                    </Option>
+                  ))}
+                </Select>
+              </Form.Item>
+              <Form.Item name="address">
+                <Input
+                  className="registry-sro__filter-input"
+                  placeholder="Адрес"
+                ></Input>
+              </Form.Item>
+              <Form.Item name="fullName">
+                <Input
+                  className="registry-sro__filter-input"
+                  placeholder="Полное наименование организации"
+                ></Input>
+              </Form.Item>
+              <Form.Item name="regNumber">
+                <Input
+                  className="registry-sro__filter-input"
+                  placeholder="Регистрационный номер"
+                ></Input>
+              </Form.Item>
+            </Form>
+          </Drawer>
+          {/* <Row>
           <Col xs={24}> */}
-            <Table
-              // loading={loading}
-              columns={columns}
-              dataSource={dataSource}
-              className="registry-sro__table"
-              size="medium"
-              // pagination={{ position: [state.top, state.bottom] }}
-              // onRow={(record, dataIndex) => {
-              //   return {
-              //     onClick: (event) => {}, // click row
-              //   };
-              // }}
-              // filterMultiple={true}
-              filterSearch={true}
-              pagination={{
-                // pageSize: '5',
-                showSizeChanger: true,
-                // itemRender: itemRender
-                total: dataSource.length,
-              }}
-              onRow={(record) => relocateToCard(record)}
-            />
-          {/* </Col>
+          <Table
+            // loading={loading}
+            columns={columns}
+            dataSource={dataSource}
+            className="registry-sro__table"
+            size="medium"
+            // pagination={{ position: [state.top, state.bottom] }}
+            // onRow={(record, dataIndex) => {
+            //   return {
+            //     onClick: (event) => {}, // click row
+            //   };
+            // }}
+            // filterMultiple={true}
+            filterSearch={true}
+            pagination={{
+              // pageSize: '5',
+              showSizeChanger: true,
+              // itemRender: itemRender
+              total: dataSource.length,
+            }}
+            onRow={(record) => relocateToCard(record)}
+          />
+        </div>
+        {/* </Col>
         </Row> */}
       </Content>
     </div>
