@@ -7,11 +7,12 @@ export const Header = () => {
   const { Content } = Layout;
 
   return (
-    <Content style={{ padding: '0 50px' }}>
+    <Content style={{ padding: '0 20px' }}>
       <header className="header">
         <div className="header__logo pointer">
-        {/* <Link to="/signup" className="btn btn-primary">Sign up</Link> */}
-          <a href='http://localhost:3000/'><img className="logo" src={logo} alt="logo" /></a>
+          <a href="http://localhost:3000/">
+            <img className="logo" src={logo} alt="logo" />
+          </a>
         </div>
         <div className="header__title">
           <div className="header__title_title">ПРОФ СДС</div>
@@ -27,6 +28,8 @@ export const Header = () => {
           <ButtonRegistry text="Реестр 4" path={'/spisok3'} />
         </div>
       </header>
+      <div className='header__line'></div>
+      {/* <hr align="center" width="auto" size="1" color="#ff0000" /> */}
     </Content>
   );
 };

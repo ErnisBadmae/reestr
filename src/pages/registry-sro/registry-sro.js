@@ -1,21 +1,9 @@
-import {
-  Table,
-  Row,
-  Col,
-  Layout,
-  Select,
-  Input,
-  Form,
-  Drawer,
-  Button,
-  Space,
-} from 'antd';
+import { Table, Layout, Select, Input, Form, Drawer, Button, Space } from 'antd';
 import { FilterFilled } from '@ant-design/icons';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './registry-sro.scss';
 import getData from '../../helpers/rootData';
 import { useDispatch, useSelector } from 'react-redux';
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const { Content } = Layout;
@@ -166,6 +154,18 @@ export const RegistryRSO = () => {
               <Input
                 className="registry-sro__filter-input"
                 placeholder="Адрес"
+              ></Input>
+            </Form.Item>
+            <Form.Item name="fullName">
+              <Input
+                className="registry-sro__filter-input"
+                placeholder="Полное наименование организации"
+              ></Input>
+            </Form.Item>
+            <Form.Item name="regNumber">
+              <Input
+                className="registry-sro__filter-input"
+                placeholder="Регистрационный номер"
               ></Input>
             </Form.Item>
           </Form>
