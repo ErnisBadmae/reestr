@@ -126,28 +126,13 @@ export const RegistryRSO = () => {
             onClick={() => setFilterModalVisible(true)}
           />
         </div>
-        <div className='registry-sro__drawer-wrapper'>
+        <div className="registry-sro__drawer-wrapper">
           <Drawer
             getContainer={false}
             style={{ position: 'absolute' }}
             title="Отфильтровать записи"
             visible={filterModalVisible}
             onClose={() => setFilterModalVisible(false)}
-            extra={
-              <Space>
-                <Button onClick={() => setFilterModalVisible(false)}>
-                  Cancel
-                </Button>
-                <Button
-                  type="primary"
-                  onClick={() => {
-                    console.log(form.getFieldsValue());
-                  }}
-                >
-                  OK
-                </Button>
-              </Space>
-            }
           >
             <Form form={form}>
               <Form.Item name="state">
@@ -181,6 +166,23 @@ export const RegistryRSO = () => {
                 ></Input>
               </Form.Item>
             </Form>
+            <div className="registry-sro__buttons-wrapper">
+              <Button
+                className="custom-button"
+                onClick={() => setFilterModalVisible(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                className="custom-button"
+                type="primary"
+                onClick={() => {
+                  console.log(form.getFieldsValue());
+                }}
+              >
+                OK
+              </Button>
+            </div>
           </Drawer>
           {/* <Row>
           <Col xs={24}> */}
