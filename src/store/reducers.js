@@ -1,6 +1,6 @@
-import { combineReducers } from "@reduxjs/toolkit";
-import main from "./main/main";
+import { combineReducers } from '@reduxjs/toolkit';
+import { entriesReducer } from './entries/reducers/entries.reducer';
 
 export const rootReducer = combineReducers({
-  main: main,
-})
+  entries: entriesReducer,
+});
