@@ -10,10 +10,9 @@ export const MainPage = () => {
       <Header />
       <main>
         <Content style={{ padding: '0 20px' }}>
-          <div className='breadcrumbs'>
+          {/* <div className='breadcrumbs'>
 
-           СДС
-          </div>
+          </div> */}
           </Content>
         <Outlet />
       </main>

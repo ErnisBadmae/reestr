@@ -27,11 +27,7 @@ const statusOptions = [
 
 export const RegistryRSO = () => {
   let [filterModalVisible, setFilterModalVisible] = useState(false);
-  // const [loading, setLoading] = useState(false);
-  // const [id, setId] = useState(0);
-
   const { entries } = useSelector((state) => state.entries);
-  console.log('entries', entries);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [form] = Form.useForm();
@@ -40,10 +36,8 @@ export const RegistryRSO = () => {
     dispatch(getEntries());
   }, []);
 
-
   const dataSource = entries.map((item) => ({ ...item, key: item.id_sds }));
-  console.log('dataSource', dataSource);
-  
+
   const relocateToCard = (record) => {
     return {
       onClick: (e) => {
@@ -55,21 +49,13 @@ export const RegistryRSO = () => {
 
   return (
     <div>
-      {/* <Space style={{}}>
-        <Input
-          placeholder="Введите поисковое значение"
-          onChange={handleChange}
-          type="text"
-          allowClear
-          value={searchText}
-        />
-      </Space> */}
       <Content style={{ padding: '0 20px' }}>
         <div className="registry-sro__filter-wrapper">
           <FilterFilled
             className="registry-sro__filter-icon"
             onClick={() => setFilterModalVisible(true)}
           />
+          {/* <div className="title-wrapper">РЕЕСТР СДС</div> */}
         </div>
         <div className="registry-sro__drawer-wrapper">
           <Drawer
@@ -129,21 +115,12 @@ export const RegistryRSO = () => {
               </Button>
             </div>
           </Drawer>
-          {/* <Row>
-          <Col xs={24}> */}
+
           <Table
-            // loading={loading}
             columns={entriesTableColumns}
             dataSource={dataSource}
             className="registry-sro__table"
             size="medium"
-            // pagination={{ position: [state.top, state.bottom] }}
-            // onRow={(record, dataIndex) => {
-            //   return {
-            //     onClick: (event) => {}, // click row
-            //   };
-            // }}
-            // filterMultiple={true}
             filterSearch={true}
             pagination={{
               // pageSize: '5',
@@ -154,8 +131,6 @@ export const RegistryRSO = () => {
             onRow={(record) => relocateToCard(record)}
           />
         </div>
-        {/* </Col>
-        </Row> */}
       </Content>
     </div>
   );

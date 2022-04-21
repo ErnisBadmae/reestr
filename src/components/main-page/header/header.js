@@ -1,4 +1,5 @@
 import { ButtonRegistry } from '../../buttons/button-registry/button-registry';
+import { Button } from 'antd';
 import logo from '../../../assets/img/logo/logo.png';
 import './header.scss';
 import { Layout } from 'antd';
@@ -17,8 +18,11 @@ export const Header = () => {
         <div className="header__title">
           <div className="header__title_title">ПРОФ СДС</div>
           <div className="header__title_support">
-            ОБЕСПЕЧЕНИЯ ВЗАИМОДЕЙСТВИЯ МЕЖДУ УЧАСТНИКАМИ СИСТЕМЫ ДОБРОВОЛЬНОЙ
-            СЕРТИФИКАЦИИ
+            Обеспечения взаимодействия между участниками системы добровольной
+            сертификации
+          </div>
+          <div className="header__title_support">
+            в сфере Оценки опыта и деловой репутации
           </div>
         </div>
         <div>
@@ -28,7 +32,7 @@ export const Header = () => {
           <ButtonRegistry text="Реестр 4" path={'/spisok3'} />
         </div>
       </header>
-      <div className='header__line'></div>
+      <div className="header__line"></div>
       {/* <hr align="center" width="auto" size="1" color="#ff0000" /> */}
     </Content>
   );
