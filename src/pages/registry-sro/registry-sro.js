@@ -1,19 +1,11 @@
-import {
-  Table,
-  Layout,
-  Select,
-  Input,
-  Form,
-  Drawer,
-  Button,
-  Space,
-} from 'antd';
+import { Table, Layout, Select, Input, Form, Drawer, Button } from 'antd';
 import { FilterFilled } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
 import './registry-sro.scss';
-import getData from '../../helpers/rootData';
+import { getEntries } from '../../store/entries/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { entriesTableColumns } from '../../helpers/entriesTableConstants';
 
 const { Content } = Layout;
 const { Option } = Select;
@@ -38,71 +30,24 @@ export const RegistryRSO = () => {
   // const [loading, setLoading] = useState(false);
   // const [id, setId] = useState(0);
 
-  const { columns, data } = useSelector((store) => store);
+  const { entries } = useSelector((state) => state.entries);
+  console.log('entries', entries);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [form] = Form.useForm();
 
   useEffect(() => {
-    dispatch(getData());
+    dispatch(getEntries());
   }, []);
 
-  // const columns = [
-  //   {
-  //     title: 'id_sds',
-  //     dataIndex: 'id_sds',
-  //     defaultSortOrder: 'descend',
-  //     // ellipsis: true,
-  //     width: '1%',
-  //   },
-  //   {
-  //     title: 'Полное наименование',
-  //     dataIndex: 'full_name',
-  //     sorter: (a, b) => a.full_name.length - b.full_name.length,
 
-  //     // defaultSortOrder: 'descend',
-  //     width: '10%',
-  //     // filters: [
-  //     //   {
-  //     //     text: 'моя компания',
-  //     //     value: 'моя компания',
-  //     //   },
-  //     // ],
-  //     // onFilter: (value, item) => item.full_name.includes(value),
-  //   },
-  //   {
-  //     title: 'Сокращенное наименование',
-  //     dataIndex: 'short_name',
-  //     // sorter: (a, b) => a.short_name.length - b.short_name.length,
-  //     // defaultSortOrder: 'descend',
-  //     width: '10%',
-  //   },
-
-  const dataSource = data.map((item) => ({ ...item, key: item.id_sds }));
-  // console.log(dataSource);
-  // function itemRender(current, type, originalElement) {
-  //   if (type === 'предыдущая') {
-  //     return <a>Previous</a>;
-  //   }
-  //   if (type === 'следующая') {
-  //     return <a>Next</a>;
-  //   }
-  //   return originalElement;
-  // }
-  // const handleSearch = (e) => {
-  //   setSearchText(e.target.value);
-  //   if (e.target.value === '') {
-  //   }
-  // };
-
+  const dataSource = entries.map((item) => ({ ...item, key: item.id_sds }));
+  console.log('dataSource', dataSource);
+  
   const relocateToCard = (record) => {
     return {
       onClick: (e) => {
         e.preventDefault();
-
-        // console.log(record, 'record')
-        //const { id_sds = '' } = record || {};
-        // setId(id_sds);
         navigate('/entry/' + record.id_sds);
       },
     };
@@ -188,7 +133,7 @@ export const RegistryRSO = () => {
           <Col xs={24}> */}
           <Table
             // loading={loading}
-            columns={columns}
+            columns={entriesTableColumns}
             dataSource={dataSource}
             className="registry-sro__table"
             size="medium"

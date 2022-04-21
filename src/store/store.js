@@ -1,10 +1,15 @@
-import { applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
-import { main } from './entries/entries';
-// import main from './main/main'
+import { configureStore } from '@reduxjs/toolkit';
+import { rootReducer } from './rootReducer';
+import { createLogger } from 'redux-logger';
 
-// export const store = configureStore({
-//   reducer: rootReducer,
-// })
+const loggerMiddleware = createLogger();
 
-export default createStore(main, applyMiddleware(thunk));
+export default configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => {
+    if (process.env.NODE_ENV !== 'production') {
+      return getDefaultMiddleware().concat(loggerMiddleware);
+    }
+    return getDefaultMiddleware();
+  },
+});
