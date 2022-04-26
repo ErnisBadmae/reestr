@@ -37,13 +37,13 @@ export const RegistryRSO = () => {
     dispatch(getEntries());
   }, []);
 
-  const dataSource = entries.map((item) => ({ ...item, key: item.id_sds }));
+  const dataSource = entries.map((item) => ({ ...item, key: item.id}));
 
   const relocateToCard = (record) => {
     return {
       onClick: (e) => {
         e.preventDefault();
-        navigate('/entry/' + record.id_sds);
+        navigate('/entry/' + record.id);
       },
     };
   };
