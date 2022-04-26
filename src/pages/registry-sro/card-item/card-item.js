@@ -3,7 +3,8 @@ import './card-item.css';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // import itemData from '../../helpers/itemData';
-import { ButtonRegistry } from '../buttons/button-registry/button-registry';
+import { ButtonRegistry } from '../../../components/buttons/button-registry/button-registry';
+
 function CardItem(props) {
   const { id } = useParams();
   // console.log( id);
@@ -22,36 +23,51 @@ function CardItem(props) {
         <strong>{currentItem.full_name}</strong>
       </div>
       <div className="card__body">
-        <strong>
-          Регистрационный номер в государственном реестре саморегулируемых
-          организаций:
-        </strong>
+        <strong>Полное наименование СДС</strong>
         <br />
-        {currentItem.reg_no}
+        <p>{currentItem.reg_no}</p>
         <strong>
           <br />
-          Адрес:
+          Регистрационный номер СДС
         </strong>
         <br />
-        {currentItem.area}
+        <p>{currentItem.area}</p>
         <strong>
           <br />
-          Сокращенное название компании:
+          Дата регистрации (оно же Дата регистрации в реестре Росстандарта)
         </strong>
         <br />
-        {currentItem.short_name}
+        <p>{currentItem.reg_date}</p>
         <strong>
           <br />
-          Дата регистрации:
+          Организация, представившая СДС на регистрацию (Оно же Держатель)
         </strong>
         <br />
-        {currentItem.reg_date}
+        <p>{currentItem.reg_comp}</p>
         <strong>
           <br />
           Сайт:
         </strong>
         <br />
-        {currentItem.site}
+        <p>{currentItem.site}</p>
+        <strong>
+          <br />
+          Область распространения системы (объекты сертификации)
+        </strong>
+        <br />
+        <p>{currentItem.reg_date}</p>
+        <strong>
+          <br />
+          Изображение знака
+        </strong>
+        <br />
+        <p>{currentItem.reg_date}</p>
+        <strong>
+          <br />
+          Статус
+        </strong>
+        <br />
+        <p>{currentItem.status}</p>
       </div>
       <div className="btn__card">
         <ButtonRegistry text="Список членов СДС" path={'/spisok2'} />

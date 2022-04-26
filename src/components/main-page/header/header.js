@@ -16,24 +16,23 @@ export const Header = () => {
           </a>
         </div>
         <div className="header__title">
-          <div className="header__title_title">ПРОФ СДС</div>
-          <div className="header__title_support">
+          <div className="header__title_title">ПРОФСДС</div>
+          {/* <div className="header__title_support">
             Обеспечения взаимодействия между участниками системы добровольной
             сертификации
           </div>
           <div className="header__title_support">
             в сфере Оценки опыта и деловой репутации
-          </div>
+          </div> */}
         </div>
         <div>
-          <ButtonRegistry text="Реестр 1" path={'/'} />
-          <ButtonRegistry text="Реестр 2" path={'/spisok2'} />
-          <ButtonRegistry text="Реестр 3" path={'/spisok3'} />
-          <ButtonRegistry text="Реестр 4" path={'/spisok3'} />
+          <ButtonRegistry text="Реестр СДС" path={'/'} />
+          <ButtonRegistry text="Реестр ОС" path={'/spisok2'} />
+          <ButtonRegistry text="Реестр экспертов" path={'/spisok3'} />
+          <ButtonRegistry text="Реестр сертификатов" path={'/spisok4'} />
         </div>
       </header>
       <div className="header__line"></div>
-      {/* <hr align="center" width="auto" size="1" color="#ff0000" /> */}
     </Content>
   );
 };

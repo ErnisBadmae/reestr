@@ -6,17 +6,18 @@ import { getEntries } from '../../store/entries/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { entriesTableColumns } from '../../helpers/entriesTableConstants';
+import { Poisk } from '../../components/poisk/poisk';
 
 const { Content } = Layout;
 const { Option } = Select;
 
 const statusOptions = [
   {
-    value: 'enabled',
+    value: 'active',
     title: 'Действует',
   },
   {
-    value: 'disabled',
+    value: 'inactive',
     title: 'Исключено',
   },
   {
@@ -51,11 +52,12 @@ export const RegistryRSO = () => {
     <div>
       <Content style={{ padding: '0 20px' }}>
         <div className="registry-sro__filter-wrapper">
+          <Poisk className="registry-sro__title-search" />
+          <div className="registry-sro__name-registry">РЕЕСТР СДС</div>
           <FilterFilled
             className="registry-sro__filter-icon"
             onClick={() => setFilterModalVisible(true)}
           />
-          {/* <div className="title-wrapper">РЕЕСТР СДС</div> */}
         </div>
         <div className="registry-sro__drawer-wrapper">
           <Drawer
