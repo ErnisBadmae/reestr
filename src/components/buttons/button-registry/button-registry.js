@@ -11,3 +11,4 @@ export const ButtonRegistry = (props) => {
     </button>
   );
 };
+
