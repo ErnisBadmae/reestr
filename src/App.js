@@ -15,18 +15,15 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<MainPage />}>
-                    <Route
-                        index
-                        element={<RegistryRSO listType={'registry1'} />}
-                    />
+                    <Route index element={<RegistryRSO />} />
                     <Route path="/view/:id" element={<CardItem />} />
                     <Route
-                        path="/2"
-                        element={<RegistryRSO listType={'registry2'} />}
+                        path="/organ_certifications/list"
+                        element={<RegistryRSO />}
                     />
                     <Route
-                        path="/3"
-                        element={<RegistryRSO listType="registry3" />}
+                        path="/organ-certification-experts/list"
+                        element={<RegistryRSO />}
                     />
                     <Route
                         path="/4"

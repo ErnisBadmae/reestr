@@ -36,19 +36,15 @@ export const RegistryRSO = ({ listType }) => {
 
     const { pathname } = useLocation();
 
-    const body = {
-        count: 2,
-        count_pages: 1,
-        page: 1,
-        row_page: 20,
-    };
+    const body = {};
+
     useEffect(() => {
         dispatch(getEntries(body));
         dispatch(getRegistry(pathname));
     }, [pathname, dispatch]);
 
     const dataSource = entries.map((item) => ({ ...item, key: item.id }));
-    console.log(dataSource, 'dataSoure');
+    //     console.log(dataSource, 'dataSoure');
 
     const relocateToCard = (record) => {
         return {
