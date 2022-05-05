@@ -35,17 +35,17 @@ export const Header = () => {
                     <ButtonRegistry
                         //     onClick={() => console.log('pathname', pathname)}
                         text="Реестр ОС"
-                        path={'/spisok2'}
+                        path={'/2'}
                     />
                     <ButtonRegistry
                         //     onClick={() => console.log('pathname', pathname)}
                         text="Реестр экспертов"
-                        path={'/spisok3'}
+                        path={'/3'}
                     />
                     <ButtonRegistry
                         //     onClick={() => console.log('pathname', pathname)}
                         text="Реестр сертификатов"
-                        path={'/spisok4'}
+                        path={'/4'}
                     />
                 </div>
             </header>

@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
-import './card-item.css';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // import itemData from '../../helpers/itemData';
 import { ButtonRegistry } from '../../../components/buttons/button-registry/button-registry';
 import { getView } from '../../../store/entries/actions';
+import './card-item.css';
 
 function CardItem(props) {
     const { id } = useParams();
-    //     console.log(id);
     const dispatch = useDispatch();
-    // const { currentItem } = useSelector((state) => state);
+
     const { currentCard } = useSelector((state) => state.entries);
 
     const currentItem = currentCard?.reduce((acc, el, i) => {
@@ -19,10 +18,8 @@ function CardItem(props) {
             ...el,
         };
     }, {});
-    //     console.log('finish', currentItem);
 
     //     const currentItem = currentCard ?? Object.assign({}, currentCard);
-    //     console.log(currentItem, 'objectasssing');
     //     const currentItem = entries.find((el) => el.id_sds === id);
     useEffect(() => {
         dispatch(getView(id));

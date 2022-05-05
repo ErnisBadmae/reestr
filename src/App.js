@@ -21,15 +21,15 @@ function App() {
                     />
                     <Route path="/view/:id" element={<CardItem />} />
                     <Route
-                        path="/spisok2"
+                        path="/2"
                         element={<RegistryRSO listType={'registry2'} />}
                     />
                     <Route
-                        path="/spisok3"
+                        path="/3"
                         element={<RegistryRSO listType="registry3" />}
                     />
                     <Route
-                        path="/spisok4"
+                        path="/4"
                         element={<RegistryRSO listType="registry4" />}
                     />
                 </Route>

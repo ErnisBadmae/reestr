@@ -34,26 +34,18 @@ export const RegistryRSO = ({ listType }) => {
     const dispatch = useDispatch();
     const [form] = Form.useForm();
 
-    //     const { pathname } = useLocation();
+    const { pathname } = useLocation();
 
+    const body = {
+        count: 2,
+        count_pages: 1,
+        page: 1,
+        row_page: 20,
+    };
     useEffect(() => {
-        switch (listType) {
-            case 'registry2':
-                dispatch(
-                    getRegistry('http://jsonplaceholder.typicode.com/posts')
-                );
-                break;
-            case 'registry3':
-                dispatch(
-                    getRegistry('http://jsonplaceholder.typicode.com/comments')
-                );
-                break;
-            default:
-                dispatch(
-                    getRegistry('http://jsonplaceholder.typicode.com/users')
-                );
-        }
-    }, [listType]);
+        dispatch(getEntries(body));
+        dispatch(getRegistry(pathname));
+    }, [pathname, dispatch]);
 
     const dataSource = entries.map((item) => ({ ...item, key: item.id }));
     console.log(dataSource, 'dataSoure');
@@ -159,3 +151,16 @@ export const RegistryRSO = ({ listType }) => {
         </div>
     );
 };
+
+//    switch (listType) {
+//        case 'registry2':
+//            dispatch(
+//                getRegistry('http://jsonplaceholder.typicode.com/posts')
+//            );
+//            break;
+//        case 'registry3':
+//            dispatch(
+//                getRegistry('http://jsonplaceholder.typicode.com/comments')
+//            );
+//            break;
+//        default:
