@@ -1,6 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { getEntries } from '../actions/getEntries';
 import { getView } from '../actions/getView';
+import { getRegistry } from '../actions/getRegistry';
+
 import {
     getEntriesFail,
     getEntriesRequest,
@@ -8,12 +10,16 @@ import {
     getViewFail,
     getViewRequest,
     getViewSuccess,
+    getRegistryFail,
+    getRegistryRequest,
+    getRegistrySuccess,
 } from './getEntries';
 
 const initialState = {
     loading: false,
     entries: [],
-    currentCard: undefined,
+    currentCard: null,
+    registry: null,
 };
 
 export const entriesReducer = createReducer(initialState, {
@@ -23,4 +29,7 @@ export const entriesReducer = createReducer(initialState, {
     [getView.pending.toString()]: getViewRequest,
     [getView.fulfilled.toString()]: getViewSuccess,
     [getView.rejected.toString()]: getViewFail,
+    [getRegistry.pending.toString()]: getRegistryRequest,
+    [getRegistry.fulfilled.toString()]: getRegistrySuccess,
+    [getRegistry.rejected.toString()]: getRegistryFail,
 });

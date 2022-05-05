@@ -8,7 +8,7 @@ import { getView } from '../../../store/entries/actions';
 
 function CardItem(props) {
     const { id } = useParams();
-    // console.log( id);
+    //     console.log(id);
     const dispatch = useDispatch();
     // const { currentItem } = useSelector((state) => state);
     const { currentCard } = useSelector((state) => state.entries);
@@ -19,14 +19,14 @@ function CardItem(props) {
             ...el,
         };
     }, {});
-    console.log('finish', currentItem);
+    //     console.log('finish', currentItem);
 
     //     const currentItem = currentCard ?? Object.assign({}, currentCard);
     //     console.log(currentItem, 'objectasssing');
     //     const currentItem = entries.find((el) => el.id_sds === id);
     useEffect(() => {
         dispatch(getView(id));
-    }, []);
+    }, [dispatch, id]);
 
     return (
         <div className="card">

@@ -1,10 +1,10 @@
 import { Table, Layout, Select, Input, Form, Drawer, Button } from 'antd';
 import { FilterFilled } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
-import { getEntries, getView } from '../../store/entries/actions';
+import { getEntries, getView, getRegistry } from '../../store/entries/actions';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { entriesTableColumns } from '../../helpers/entriesTableConstants';
 import { Poisk } from '../../components/poisk/poisk';
 import './registry-sro.scss';
@@ -27,16 +27,33 @@ const statusOptions = [
     },
 ];
 
-export const RegistryRSO = () => {
+export const RegistryRSO = ({ listType }) => {
     let [filterModalVisible, setFilterModalVisible] = useState(false);
     const { entries } = useSelector((state) => state.entries);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [form] = Form.useForm();
 
+    //     const { pathname } = useLocation();
+
     useEffect(() => {
-        dispatch(getEntries());
-    }, []);
+        switch (listType) {
+            case 'registry2':
+                dispatch(
+                    getRegistry('http://jsonplaceholder.typicode.com/posts')
+                );
+                break;
+            case 'registry3':
+                dispatch(
+                    getRegistry('http://jsonplaceholder.typicode.com/comments')
+                );
+                break;
+            default:
+                dispatch(
+                    getRegistry('http://jsonplaceholder.typicode.com/users')
+                );
+        }
+    }, [listType]);
 
     const dataSource = entries.map((item) => ({ ...item, key: item.id }));
     console.log(dataSource, 'dataSoure');
@@ -46,7 +63,7 @@ export const RegistryRSO = () => {
             onClick: (e) => {
                 e.preventDefault();
                 navigate('/view/' + record.id);
-                //  console.log(record, 'record');
+                //   console.log(record, 'pathName');
             },
         };
     };
