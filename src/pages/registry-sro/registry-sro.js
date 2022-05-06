@@ -1,11 +1,16 @@
 import { Table, Layout, Select, Input, Form, Drawer, Button } from 'antd';
 import { FilterFilled } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
-import { getEntries, getView, getRegistry } from '../../store/entries/actions';
+import { getEntries, getView } from '../../store/entries/actions';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { entriesTableColumns } from '../../helpers/entriesTableConstants';
+import {
+    entriesTableColumns,
+    organCertificationTableColumn,
+    expertsListTableColumn,
+    certifacatesTableColumn,
+} from '../../helpers/entriesTableConstants';
 import { Poisk } from '../../components/poisk/poisk';
 import './registry-sro.scss';
 
@@ -29,7 +34,9 @@ const statusOptions = [
 
 export const RegistryRSO = ({ listType }) => {
     let [filterModalVisible, setFilterModalVisible] = useState(false);
+
     const { entries } = useSelector((state) => state.entries);
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [form] = Form.useForm();
@@ -39,8 +46,24 @@ export const RegistryRSO = ({ listType }) => {
     const body = {};
 
     useEffect(() => {
-        dispatch(getEntries(body));
-        dispatch(getRegistry(pathname));
+        console.log(pathname, 'pathname');
+        switch (pathname) {
+            case '/organ_certifications/list':
+                dispatch(getEntries(pathname));
+                break;
+            case '/organ-certification-experts/list':
+                dispatch(getEntries(pathname));
+                break;
+            case '/certificates/list':
+                dispatch(getEntries(pathname));
+                break;
+
+            default:
+                dispatch(getEntries('/standard-certifications/list'));
+                break;
+        }
+        //    dispatch(getEntries(body));
+        //    dispatch(getRegistry(pathname));
     }, [pathname, dispatch]);
 
     const dataSource = entries.map((item) => ({ ...item, key: item.id }));
@@ -51,9 +74,24 @@ export const RegistryRSO = ({ listType }) => {
             onClick: (e) => {
                 e.preventDefault();
                 navigate('/view/' + record.id);
-                //   console.log(record, 'pathName');
             },
         };
+    };
+
+    const handleColumns = () => {
+        switch (pathname) {
+            case '/organ_certifications/list':
+                return organCertificationTableColumn;
+
+            case '/organ-certification-experts/list':
+                return expertsListTableColumn;
+
+            case '/certificates/list':
+                return certifacatesTableColumn;
+
+            default:
+                return entriesTableColumns;
+        }
     };
 
     return (
@@ -129,7 +167,7 @@ export const RegistryRSO = ({ listType }) => {
                     </Drawer>
 
                     <Table
-                        columns={entriesTableColumns}
+                        columns={handleColumns()}
                         dataSource={dataSource}
                         className="registry-sro__table"
                         size="medium"

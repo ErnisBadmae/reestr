@@ -45,7 +45,7 @@ export const Header = () => {
                     <ButtonRegistry
                         //     onClick={() => console.log('pathname', pathname)}
                         text="Реестр сертификатов"
-                        path={'/4'}
+                        path={'certificates/list'}
                     />
                 </div>
             </header>

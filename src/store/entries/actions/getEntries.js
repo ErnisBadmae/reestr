@@ -5,7 +5,7 @@ export const getEntries = createAsyncThunk(
     'entries/get',
     async (payload, dispatch) => {
         let result = await axios.post(
-            'http://api-prof-sdc.anonamis.ru/api/register/standard-certifications/list'
+            `http://api-prof-sdc.anonamis.ru/api/register${payload}`
         );
         console.log('result', result);
         return result.data.data.data;

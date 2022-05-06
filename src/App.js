@@ -26,8 +26,8 @@ function App() {
                         element={<RegistryRSO />}
                     />
                     <Route
-                        path="/4"
-                        element={<RegistryRSO listType="registry4" />}
+                        path="/certificates/list"
+                        element={<RegistryRSO />}
                     />
                 </Route>
             </Routes>

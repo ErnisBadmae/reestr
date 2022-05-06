@@ -18,7 +18,6 @@ function CardItem(props) {
             ...el,
         };
     }, {});
-
     //     const currentItem = currentCard ?? Object.assign({}, currentCard);
     //     const currentItem = entries.find((el) => el.id_sds === id);
     useEffect(() => {
