@@ -19,6 +19,11 @@ const initialState = {
     loading: false,
     entries: [],
     currentCard: null,
+    registry1: null,
+    registry2: null,
+    registry3: null,
+    registry4: null,
+
     //     registry: null,
 };
 

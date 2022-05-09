@@ -4,18 +4,15 @@ import './main-page.scss';
 import { Layout } from 'antd';
 
 export const MainPage = () => {
-  const { Content } = Layout;
-  return (
-    <>
-      <Header />
-      <main>
-        <Content style={{ padding: '0 20px' }}>
-          {/* <div className='breadcrumbs'>
-
+    const { Content } = Layout;
+    return (
+        <>
+            <Header />
+            {/* <Content style={{ padding: '0 20px' }}>
+                {/* <div className='breadcrumbs'>
           </div> */}
-          </Content>
-        <Outlet />
-      </main>
-    </>
-  );
+            <Outlet />
+            {/* </Content> */}
+        </>
+    );
 };
