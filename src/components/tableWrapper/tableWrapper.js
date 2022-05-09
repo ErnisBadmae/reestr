@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
-import { Table, Layout, Select, Input, Form, Drawer, Button } from 'antd';
+import { Select, Input, Form, Drawer, Button } from 'antd';
 import { FilterFilled } from '@ant-design/icons';
 import { Poisk } from '../../components/poisk/poisk';
 import { useState } from 'react';
 
-const { Content } = Layout;
+// const { Content } = Layout;
 const { Option } = Select;
 
 const statusOptions = [
@@ -25,6 +25,7 @@ const statusOptions = [
 export const TableWrapper = () => {
     let [filterModalVisible, setFilterModalVisible] = useState(false);
     const [form] = Form.useForm();
+
     return (
         <div>
             {/* <Content style={{ padding: '0 20px' }}> */}

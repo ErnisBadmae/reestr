@@ -4,7 +4,7 @@ import { Table } from 'antd';
 import { getEntries } from '../../store/entries/actions';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import './registry-certificates.scss';
 
@@ -12,6 +12,7 @@ export const RegistryCertificates = () => {
     const { entries } = useSelector((state) => state.entries);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const { pathname } = useLocation();
 
@@ -57,6 +58,33 @@ export const RegistryCertificates = () => {
             number_in_row: 1,
         },
     ];
+    const relocateToCard = (record) => {
+        return {
+            onClick: (e) => {
+                e.preventDefault();
+                switch (pathname) {
+                    case '/organ-certifications/list':
+                        navigate('/organ-certification/view/' + record.id);
+                        break;
+
+                    case '/organ-certification-experts/list':
+                        navigate(
+                            '/organ-certification-expert/view/' + record.id
+                        );
+                        break;
+
+                    case '/certificates/list':
+                        navigate('/certificate/view/' + record.id);
+                        break;
+
+                    default:
+                        navigate('/standard-certification/view/' + record.id);
+                        break;
+                }
+            },
+        };
+    };
+
     return (
         <div>
             <Table
@@ -71,6 +99,7 @@ export const RegistryCertificates = () => {
                     // itemRender: itemRender
                     total: entries.length,
                 }}
+                onRow={(record) => relocateToCard(record)}
             />
         </div>
     );

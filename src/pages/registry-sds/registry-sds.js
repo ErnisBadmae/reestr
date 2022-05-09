@@ -1,19 +1,16 @@
 import React, { useEffect } from 'react';
 import { Table } from 'antd';
-
+import { useNavigate, useLocation } from 'react-router-dom';
 import { getEntries } from '../../store/entries/actions';
-
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 
 import './registry-sds.scss';
 
 export const RegistrySds = () => {
     const { entries } = useSelector((state) => state.entries);
-
     const dispatch = useDispatch();
-
     const { pathname } = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(getEntries(pathname));
@@ -64,6 +61,33 @@ export const RegistrySds = () => {
         },
     ];
 
+    const relocateToCard = (record) => {
+        return {
+            onClick: (e) => {
+                e.preventDefault();
+                switch (pathname) {
+                    case '/organ-certifications/list':
+                        navigate('/organ-certification/view/' + record.id);
+                        break;
+
+                    case '/organ-certification-experts/list':
+                        navigate(
+                            '/organ-certification-expert/view/' + record.id
+                        );
+                        break;
+
+                    case '/certificates/list':
+                        navigate('/certificate/view/' + record.id);
+                        break;
+
+                    default:
+                        navigate('/standard-certification/view/' + record.id);
+                        break;
+                }
+            },
+        };
+    };
+
     return (
         <div>
             <Table
@@ -78,6 +102,7 @@ export const RegistrySds = () => {
                     // itemRender: itemRender
                     total: entries.length,
                 }}
+                onRow={(record) => relocateToCard(record)}
             />
         </div>
     );

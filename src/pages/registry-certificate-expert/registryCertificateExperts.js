@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Table } from 'antd';
-
 import { getEntries } from '../../store/entries/actions';
-
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import './registry-certificate-expert.scss';
 
 export const RegistryCertificationExperts = () => {
     const { entries } = useSelector((state) => state.entries);
-
     const dispatch = useDispatch();
-
     const { pathname } = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(getEntries(pathname));
@@ -34,13 +31,39 @@ export const RegistryCertificationExperts = () => {
             data_type: 'string',
             is_sort: true,
             number_in_row: 1,
-            render: (expert_name, record) => (
-                <Link to={`/organ-certification-expert/view/${record.id}`}>
-                    {expert_name}{' '}
-                </Link>
-            ),
+            //   render: (expert_name, record) => (
+            //       <Link to={`/organ-certification-expert/view/${record.id}`}>
+            //           {expert_name}{' '}
+            //       </Link>
+            //   ),
         },
     ];
+    const relocateToCard = (record) => {
+        return {
+            onClick: (e) => {
+                e.preventDefault();
+                switch (pathname) {
+                    case '/organ-certifications/list':
+                        navigate('/organ-certification/view/' + record.id);
+                        break;
+
+                    case '/organ-certification-experts/list':
+                        navigate(
+                            '/organ-certification-expert/view/' + record.id
+                        );
+                        break;
+
+                    case '/certificates/list':
+                        navigate('/certificate/view/' + record.id);
+                        break;
+
+                    default:
+                        navigate('/standard-certification/view/' + record.id);
+                        break;
+                }
+            },
+        };
+    };
 
     return (
         <div>
@@ -56,6 +79,7 @@ export const RegistryCertificationExperts = () => {
                     // itemRender: itemRender
                     total: entries.length,
                 }}
+                onRow={(record) => relocateToCard(record)}
             />
         </div>
     );

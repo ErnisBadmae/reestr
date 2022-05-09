@@ -6,6 +6,8 @@ import { RegistryCertificationExperts } from './pages/registry-certificate-exper
 import { TableWrapper } from './components/tableWrapper/tableWrapper';
 import { RegistryOs } from './pages/registry-os/registry-os';
 import { RegistryCertificates } from './pages/registry-certificates/registry-certificates';
+import CardRegCertExp from './pages/registry-certificate-expert/card-reg-cert-exp/card-reg-cert-exp';
+import CardSertificate from './pages/registry-certificates/card-certificates/card-certificates';
 
 function App() {
     return (
@@ -14,15 +16,15 @@ function App() {
                 <Route path="/" element={<MainPage />}>
                     <Route
                         path="/organ-certification-expert/view/:id"
-                        element={<CardItem />}
+                        element={<CardRegCertExp />}
                     />
                     <Route
                         path="/certificate/view/:id"
-                        element={<CardItem />}
+                        element={<CardSertificate />}
                     />
                     <Route
                         path="/standard-certification/view/:id"
-                        element={<CardItem />}
+                        element={<CardRegCertExp />}
                     />
                     <Route
                         path="/organ-certification/view/:id"
