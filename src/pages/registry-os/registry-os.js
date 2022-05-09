@@ -6,9 +6,9 @@ import { getEntries } from '../../store/entries/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
-import './registry-sds.scss';
+import './registry-os.scss';
 
-export const RegistrySds = () => {
+export const RegistryOs = () => {
     const { entries } = useSelector((state) => state.entries);
 
     const dispatch = useDispatch();
@@ -28,36 +28,15 @@ export const RegistrySds = () => {
             number_in_row: 2,
         },
         {
-            title: 'Статус ',
-            dataIndex: 'status',
+            title: 'Наименование',
+            dataIndex: 'full_name_organ_certification',
             data_type: 'string',
             is_sort: true,
             number_in_row: 1,
         },
         {
-            title: 'Наименование СДС',
-            dataIndex: 'full_name',
-            data_type: 'string',
-            is_sort: true,
-            number_in_row: 1,
-        },
-        {
-            title: 'Регистрационный номер СДС',
-            dataIndex: 'reg_no',
-            data_type: 'string',
-            is_sort: true,
-            number_in_row: 1,
-        },
-        {
-            title: 'Держатель',
-            dataIndex: 'reg_comp',
-            data_type: 'string',
-            is_sort: true,
-            number_in_row: 1,
-        },
-        {
-            title: 'Дата регистрации',
-            dataIndex: 'reg_date',
+            title: 'Сокращенное название',
+            dataIndex: 'short_name_organ_certification',
             data_type: 'string',
             is_sort: true,
             number_in_row: 1,
