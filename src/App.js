@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { MainPage } from './components/main-page/main-page';
 import { RegistrySds } from './pages/registry-sds/registry-sds';
 import { RegistryCertificationExperts } from './pages/registry-certificate-expert/registryCertificateExperts';
@@ -14,6 +14,15 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<MainPage />}>
+                    <Route
+                        path="/"
+                        element={
+                            <Navigate
+                                to="/standard-certifications/list"
+                                replace
+                            />
+                        }
+                    />
                     <Route
                         path="/organ-certification-expert/view/:id"
                         element={<CardRegCertExp />}

@@ -6,6 +6,8 @@ import React from 'react';
 import './main-page.scss';
 
 export const MainPage = () => {
+    //
+
     return (
         <>
             <Header />
