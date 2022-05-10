@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { Table } from 'antd';
-
 import { getEntries } from '../../store/entries/actions';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -44,28 +42,11 @@ export const RegistryOs = () => {
         },
     ];
     const relocateToCard = (record) => {
+        //    console.log(record, 'recorddddddd');
         return {
             onClick: (e) => {
                 e.preventDefault();
-                switch (pathname) {
-                    case '/organ-certifications/list':
-                        navigate('/organ-certification/view/' + record.id);
-                        break;
-
-                    case '/organ-certification-experts/list':
-                        navigate(
-                            '/organ-certification-expert/view/' + record.id
-                        );
-                        break;
-
-                    case '/certificates/list':
-                        navigate('/certificate/view/' + record.id);
-                        break;
-
-                    default:
-                        navigate('/standard-certification/view/' + record.id);
-                        break;
-                }
+                navigate('/organ-certification/view/' + 1);
             },
         };
     };

@@ -8,8 +8,8 @@ import './registry-sds.scss';
 
 export const RegistrySds = () => {
     const { entries } = useSelector((state) => state.entries);
-    const dispatch = useDispatch();
     const { pathname } = useLocation();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {

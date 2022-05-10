@@ -30,44 +30,47 @@ function CardOs(props) {
     return (
         <div className="card">
             <div className="card__title">
-                <strong>{currentItem?.company_name}</strong>
+                <strong>
+                    {currentItem?.full_name_organization_certification}
+                </strong>
             </div>
 
             <div className="card__body">
-                <strong>№ выданного сертификата</strong>
+                <strong>Номер аттестата аккредитации</strong>
                 <br />
-                <p>{currentItem?.number}</p>
+                <p>{currentItem?.certificate_number}</p>
                 <br />
 
-                <strong>ИНН получателя</strong>
-                <br />
-                <p>{currentItem?.company_inn}</p>
-
-                <strong>
-                    <br />№ бланка
-                </strong>
-                <p>{currentItem?.certificate_form}</p>
-
-                <strong>
-                    <br />
-                    Дата выдачи
-                </strong>
+                <strong>Дата решения об аккредитации</strong>
                 <br />
                 <p>{currentItem?.certificate_date}</p>
 
                 <strong>
                     <br />
-                    Соответствие требованиям (например, стандарт)
+                    Номер решения об аккредитации
                 </strong>
-                <br />
-                <p>{currentItem?.certificate_conformity}</p>
+                <p>{currentItem?.decision_number}</p>
 
                 <strong>
                     <br />
-                    ОГРН получателя
+                    ИНН
                 </strong>
                 <br />
-                <p>{currentItem?.company_ogrn}</p>
+                <p>{currentItem?.inn}</p>
+
+                <strong>
+                    <br />
+                    ОГРН
+                </strong>
+                <br />
+                <p>{currentItem?.ogrn}</p>
+
+                <strong>
+                    <br />
+                    ФИО руководителя
+                </strong>
+                <br />
+                <p>{currentItem?.manager_name}</p>
 
                 {/* <strong>
                     <br />

@@ -30,20 +30,17 @@ function CardRegCertExp(props) {
     return (
         <div className="card">
             <div className="card__title">
-                <strong>{currentItem?.full_name}</strong>
+                <strong>{currentItem?.expert_name}</strong>
             </div>
 
             <div className="card__body">
-                <strong>Регистрационный номер СДС</strong>
+                <strong>№ аттестата</strong>
                 <br />
-                <p>{currentItem?.registration_number}</p>
+                <p>{currentItem?.certificate_number}</p>
 
-                <strong>
-                    Дата регистрации (оно же Дата регистрации в реестре
-                    Росстандарта)
-                </strong>
+                <strong>Область специализации</strong>
                 <br />
-                <p>{currentItem?.registration_date}</p>
+                <p>{currentItem?.area}</p>
 
                 <strong>
                     <br />
@@ -54,24 +51,31 @@ function CardRegCertExp(props) {
 
                 <strong>
                     <br />
-                    Сайт:
+                    Действителен до
                 </strong>
                 <br />
-                <p>{currentItem?.site}</p>
+                <p>{currentItem?.valid}</p>
 
                 <strong>
                     <br />
-                    Область распространения системы (объекты сертификации)
+                    Дата вступление в организацию
                 </strong>
                 <br />
-                <p>{currentItem?.area}</p>
+                <p>{currentItem?.introduction_date}</p>
 
-                {/* <strong>
+                <strong>
                     <br />
-                    Изображение знака
+                    Дата исключение из организации
                 </strong>
                 <br />
-                <p>{currentItem?.reg_date}</p> */}
+                <p>{currentItem?.exclusion_date}</p>
+
+                <strong>
+                    <br />
+                    Должность при исключение
+                </strong>
+                <br />
+                <p>{currentItem?.exclusion_position}</p>
 
                 {/* <strong>
                     <br />

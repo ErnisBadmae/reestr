@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CardItem from './pages/registry-sds/card-item/card-item';
 import { MainPage } from './components/main-page/main-page';
 import { RegistrySds } from './pages/registry-sds/registry-sds';
 import { RegistryCertificationExperts } from './pages/registry-certificate-expert/registryCertificateExperts';
@@ -8,6 +7,7 @@ import { RegistryOs } from './pages/registry-os/registry-os';
 import { RegistryCertificates } from './pages/registry-certificates/registry-certificates';
 import CardRegCertExp from './pages/registry-certificate-expert/card-reg-cert-exp/card-reg-cert-exp';
 import CardSertificate from './pages/registry-certificates/card-certificates/card-certificates';
+import CardOs from './pages/registry-os/card-os/card-os';
 
 function App() {
     return (
@@ -28,8 +28,9 @@ function App() {
                     />
                     <Route
                         path="/organ-certification/view/:id"
-                        element={<CardItem />}
+                        element={<CardOs />}
                     />
+
                     <Route element={<TableWrapper />}>
                         <Route
                             path="/standard-certifications/list"
