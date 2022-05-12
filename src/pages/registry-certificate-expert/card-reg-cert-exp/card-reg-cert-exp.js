@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { ButtonRegistry } from '../../../components/buttons/button-registry/button-registry';
 import { getView } from '../../../store/entries/actions';
+import { correctlyDate } from '../../../helpers/utils';
 
 import './card-item.css';
 
@@ -53,21 +53,21 @@ function CardExpert(props) {
                     Действителен до
                 </strong>
                 <br />
-                <p>{currentItem?.valid}</p>
+                <p>{correctlyDate(currentItem?.valid)}</p>
 
-                {/* <strong>
+                <strong>
                     <br />
-                    Дата вступление в организацию
+                    Дата вступления в организацию
                 </strong>
                 <br />
-                <p>{currentItem?.introduction_date}</p> */}
+                <p>{correctlyDate(currentItem?.introduction_date)}</p>
 
                 {/* <strong>
                     <br />
                     Дата исключение из организации
                 </strong>
                 <br />
-                <p>{currentItem?.exclusion_date}</p> */}
+                <p>{currentItem?.exclusion_date}</p>
 
                 <strong>
                     <br />

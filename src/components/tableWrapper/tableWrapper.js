@@ -3,6 +3,8 @@ import { Select, Layout, Input, Form, Drawer, Button } from 'antd';
 import { FilterFilled } from '@ant-design/icons';
 import { Poisk } from '../../components/poisk/poisk';
 import { useState } from 'react';
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const { Content } = Layout;
 const { Option } = Select;
@@ -23,8 +25,26 @@ const statusOptions = [
 ];
 
 export const TableWrapper = () => {
+    const { pathname } = useLocation();
+
     let [filterModalVisible, setFilterModalVisible] = useState(false);
     const [form] = Form.useForm();
+
+    const handleTitle = () => {
+        switch (pathname) {
+            case '/organ-certifications/list':
+                return 'ОД';
+
+            case '/organ-certification-experts/list':
+                return 'Эксперты';
+
+            case '/certificates/list':
+                return 'Сертификаты';
+
+            default:
+                return 'СДС';
+        }
+    };
 
     return (
         <Content style={{ padding: '0 20px' }}>
@@ -32,7 +52,7 @@ export const TableWrapper = () => {
                 <div className="registry-sro__filter-wrapper">
                     <Poisk className="registry-sro__title-search" />
                     <div className="registry-sro__name-registry">
-                        РЕЕСТР СДС
+                        {handleTitle()}
                     </div>
                     <FilterFilled
                         className="registry-sro__filter-icon"
@@ -90,7 +110,12 @@ export const TableWrapper = () => {
                                 className="custom-button"
                                 type="primary"
                                 onClick={() => {
-                                    console.log(form.getFieldsValue());
+                                    const body = form.getFieldsValue();
+
+                                    axios.post(
+                                        'http://api-prof-sdc.anonamis.ru/api/register/standard-certifications/list',
+                                        body
+                                    );
                                 }}
                             >
                                 OK
