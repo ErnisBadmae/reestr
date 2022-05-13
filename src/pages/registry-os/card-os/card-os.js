@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getView } from '../../../store/entries/actions';
+import { correctlyDate } from '../../../helpers/utils';
 
 import './card-item.css';
 
@@ -35,9 +36,9 @@ function CardOs(props) {
                 <p>{currentItem?.certificate_number}</p>
                 <br />
 
-                {/* <strong>Дата решения об аккредитации</strong>
+                <strong>Дата решения об аккредитации</strong>
                 <br />
-                <p>{currentItem?.certificate_date}</p> */}
+                <p>{correctlyDate(currentItem?.certificate_date)}</p>
 
                 <strong>
                     <br />

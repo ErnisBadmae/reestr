@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getView } from '../../../store/entries/actions';
+import { correctlyDate } from '../../../helpers/utils';
 
 import './card-item.css';
 
@@ -42,18 +43,18 @@ function CardSertificate(props) {
                 </strong>
                 <p>{currentItem?.certificate_form}</p>
 
-                {/* <strong>
+                <strong>
                     <br />
                     Дата выдачи
                 </strong>
                 <br />
-                <p>{currentItem?.certificate_date}</p> */}
+                <p>{correctlyDate(currentItem?.certificate_date)}</p>
                 <strong>
                     <br />
                     Срок действия
                 </strong>
                 <br />
-                <p>{currentItem?.valid_date}</p>
+                <p>{correctlyDate(currentItem?.valid_date)}</p>
 
                 <strong>
                     <br />

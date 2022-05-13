@@ -27,3 +27,19 @@ export const correctlyDate = (stringDate) => {
     let correct = new Date(stringDate);
     return correct.toLocaleDateString('ru');
 };
+
+export const handleTitle = (pathname) => {
+    switch (pathname) {
+        case '/organ-certifications/list':
+            return 'Реестр ОС';
+
+        case '/organ-certification-experts/list':
+            return 'Реестр экспертов';
+
+        case '/certificates/list':
+            return 'Реестр сертификатов';
+
+        default:
+            return 'СДС';
+    }
+};

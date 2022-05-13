@@ -62,13 +62,16 @@ export const OsTableColumn = [
 ];
 
 export const certifacatesTableColumn = [
-    //    {
-    //        title: '',
-    //        dataIndex: 'id',
-    //        data_type: 'string',
-    //        is_sort: true,
-    //        number_in_row: 2,
-    //    },
+    {
+        title: '',
+        dataIndex: 'id',
+        data_type: 'string',
+        is_sort: true,
+        number_in_row: 2,
+        sorter: (a, b) => a.id - b.id,
+        showSorterTooltip: false,
+        defaultSortOrder: 'ascend',
+    },
     {
         title: 'Наименование организации',
         dataIndex: 'company_name',
@@ -94,13 +97,16 @@ export const certifacatesTableColumn = [
 ];
 
 export const certificateExpertsTable = [
-    //    {
-    //        title: '',
-    //        dataIndex: 'id',
-    //        data_type: 'string',
-    //        is_sort: true,
-    //        number_in_row: 2,
-    //    },
+    {
+        title: '',
+        dataIndex: 'id',
+        data_type: 'string',
+        is_sort: true,
+        number_in_row: 2,
+        sorter: (a, b) => a.id - b.id,
+        showSorterTooltip: false,
+        defaultSortOrder: 'ascend',
+    },
     {
         title: 'Имя Эксперта',
         dataIndex: 'expert_name',

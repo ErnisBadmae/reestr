@@ -37,6 +37,7 @@ function CardExpert(props) {
                 <strong>№ аттестата</strong>
                 <br />
                 <p>{currentItem?.certificate_number}</p>
+                <br />
 
                 <strong>Область специализации</strong>
                 <br />
@@ -55,23 +56,23 @@ function CardExpert(props) {
                 <br />
                 <p>{correctlyDate(currentItem?.valid)}</p>
 
-                <strong>
+                {/* <strong>
                     <br />
                     Дата вступления в организацию
                 </strong>
                 <br />
-                <p>{correctlyDate(currentItem?.introduction_date)}</p>
+                <p>{correctlyDate(currentItem?.introduction_date)}</p> */}
 
                 {/* <strong>
                     <br />
                     Дата исключение из организации
                 </strong>
                 <br />
-                <p>{currentItem?.exclusion_date}</p>
+                <p>{currentItem?.exclusion_date}</p> */}
 
                 <strong>
                     <br />
-                    Должность при исключение
+                    Должность при исключении
                 </strong>
                 <br />
                 <p>{currentItem?.exclusion_position}</p>
@@ -81,7 +82,7 @@ function CardExpert(props) {
                     Статус
                 </strong>
                 <br />
-                <p>{currentItem?.status || 'нет данных'}</p> */}
+                <p>{currentItem?.status || 'нет данных'}</p>
             </div>
             {/* <div className="btn__card">
                 <ButtonRegistry
@@ -97,6 +98,7 @@ function CardExpert(props) {
                     path={'/certificates/list'}
                 />
             </div> */}
+            </div>
         </div>
     );
 }

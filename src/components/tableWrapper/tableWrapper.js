@@ -5,7 +5,7 @@ import { Poisk } from '../../components/poisk/poisk';
 import { useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-
+import { handleTitle } from '../../helpers/utils';
 const { Content } = Layout;
 const { Option } = Select;
 
@@ -30,29 +30,13 @@ export const TableWrapper = () => {
     let [filterModalVisible, setFilterModalVisible] = useState(false);
     const [form] = Form.useForm();
 
-    const handleTitle = () => {
-        switch (pathname) {
-            case '/organ-certifications/list':
-                return 'ОД';
-
-            case '/organ-certification-experts/list':
-                return 'Эксперты';
-
-            case '/certificates/list':
-                return 'Сертификаты';
-
-            default:
-                return 'СДС';
-        }
-    };
-
     return (
         <Content style={{ padding: '0 20px' }}>
             <div>
                 <div className="registry-sro__filter-wrapper">
                     <Poisk className="registry-sro__title-search" />
                     <div className="registry-sro__name-registry">
-                        {handleTitle()}
+                        {handleTitle(pathname)}
                     </div>
                     <FilterFilled
                         className="registry-sro__filter-icon"
@@ -62,7 +46,7 @@ export const TableWrapper = () => {
                 <div className="registry-sro__drawer-wrapper">
                     <Drawer
                         getContainer={false}
-                        style={{ position: 'absolute' }}
+                        //     style={{ position: 'absolute' }}
                         title="Отфильтровать записи"
                         visible={filterModalVisible}
                         onClose={() => setFilterModalVisible(false)}

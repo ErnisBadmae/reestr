@@ -3,15 +3,22 @@ import { Table } from 'antd';
 import { getEntries } from '../../store/entries/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { relocateToCard } from '../../helpers/utils';
+import {
+    relocateToCard,
+    // correctlyDate
+} from '../../helpers/utils';
 import { certifacatesTableColumn } from '../../helpers/columnsTableConstants';
 
 import './registry-certificate-expert.scss';
 
 export const RegistryCertificationExperts = () => {
     const { entries } = useSelector((state) => state.entries);
-    const dispatch = useDispatch();
+    //     entries.map((el) => {
+    //         correctlyDate(el.certificate_date);
+    //     });
+
     const { pathname } = useLocation();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
