@@ -8,7 +8,8 @@ export const sdsTableColumns = [
         sorter: (a, b) => a.id - b.id,
         showSorterTooltip: false,
         defaultSortOrder: 'ascend',
-        //   sortDirections: ['descend', 'ascend'],
+        sortDirections: ['ascend', 'descend'],
+        width: 30,
     },
 
     {
@@ -44,6 +45,7 @@ export const OsTableColumn = [
         data_type: 'string',
         is_sort: true,
         number_in_row: 1,
+        //    width: 20,
     },
     {
         title: 'Сокращенное название',
@@ -71,6 +73,7 @@ export const certifacatesTableColumn = [
         sorter: (a, b) => a.id - b.id,
         showSorterTooltip: false,
         defaultSortOrder: 'ascend',
+        width: 30,
     },
     {
         title: 'Наименование организации',
@@ -106,6 +109,7 @@ export const certificateExpertsTable = [
         sorter: (a, b) => a.id - b.id,
         showSorterTooltip: false,
         defaultSortOrder: 'ascend',
+        width: 30,
     },
     {
         title: 'Имя Эксперта',
