@@ -36,6 +36,22 @@ export const sdsTableColumns = [
         number_in_row: 1,
         //    align: 'center',
     },
+    {
+        title: 'Держатель',
+        dataIndex: 'registration_companyfix',
+        data_type: 'string',
+        is_sort: true,
+        number_in_row: 1,
+        //    align: 'center',
+    },
+    {
+        title: 'Дата регистрации',
+        dataIndex: 'registration_date',
+        data_type: 'string',
+        is_sort: true,
+        number_in_row: 1,
+        //    align: 'center',
+    },
 ];
 
 export const OsTableColumn = [
