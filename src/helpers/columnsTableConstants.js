@@ -18,7 +18,6 @@ export const sdsTableColumns = [
         data_type: 'string',
         is_sort: true,
         number_in_row: 1,
-        //    align: 'center',
     },
     {
         title: 'Сокращенное название',
@@ -26,7 +25,6 @@ export const sdsTableColumns = [
         data_type: 'string',
         is_sort: true,
         number_in_row: 1,
-        //    align: 'center',
     },
     {
         title: 'Регистрационный номер СДС',
